@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="/css/swiper.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,900" rel="stylesheet"> 
+  <style type="text/css">
+    .section--intro{
+      overflow: visible !important; 
+    }
+    .el-form-item__label{
+
+      font-size:15px;
+      font-weight: 600;
+    }
+    .form-data{
+
+      border-radius: 20px;
+      padding: 40px 20px;
+      color:black;
+      background-color: white;
+      margin-top: 150px;
+      margin-bottom: 60px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="app">
+
+
+
+    <header class="header">
+      <div class="header__content header__content--fluid-width">
+        <div class="header__logo-title"><img style="margin-top: 10px;width:60px" src="https://res.cloudinary.com/doo4xi4rh/image/upload/v1596330699/seuvn_tysh5p.png"></div>
+        <div class="header__logo-title" style="margin-top: 5px;margin-left: 15px"><span>SEU.VN</span></div>
+        <nav class="header__menu">                                                                   
+          <ul>
+            <li><a class="selected header-link" href="/#intro">HOME</a></li>
+            <li class="menu-item-has-children"><a href="/#features" class="header-link">TÍNH NĂNG</a>
+              <ul class="sub-menu">
+                <li><a href="/#hiw" class="header-link">HOW IT WORKS</a></li>
+                <li><a href="/#clients" class="header-link">OUR CLIENTS</a></li>
+                <li><a href="/#faq" class="header-link">FAQ</a></li>
+                <li><a href="/#testimonials" class="header-link">TESTIMONIALS</a></li>
+                <li><a href="/#support" class="header-link">SUPPORT</a></li>
+              </ul>
+            </li>
+            <li><a href="/#pricing" class="header-link">BẢNG GIÁ</a></li>
+            <li><a href="/#support" class="header-link">LIÊN HỆ</a></li>
+            <li class="header__btn header__btn--login"><a href="/dang-nhap">Đăng Nhập</a></li>
+            <li class="header__btn header__btn--signup"><a href="/dang-ki">Đăng kí sử dụng</a></li>     
+          </ul>
+        </nav> 
+      </div>    
+    </header>
+
+    <el-row :gutter="20">
+      <el-col align="center" :span="8" :offset="8">
+
+
+        <el-form class="form-data" ref="form" :rules="ruleForm" :model="formData"  status-icon label-width="auto" label-position="top" :inline="false" :disabled="false" :inline-message="false" show-message validate-on-rule-change size="medium">
+          <h3>ĐĂNG KÍ MIỄN PHÍ</h3>
+          
+          <el-form-item label="Họ và Tên :" prop="fullname" align="left">
+            <el-input @keyup.enter.native="register" autofocus spellcheck="false" placeholder="Vui lòng nhập Họ và Tên" v-model="formData.fullname" size="medium" prefix-icon="el-icon-user-solid" clearable type="text" :autosize="false" :disabled="false" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="Số điện thoại :" prop="phone" align="left">
+            <el-input  @keyup.enter.native="register" autofocus spellcheck="false" placeholder="Vui lòng nhập số điện thoại" v-model="formData.phone" size="medium" prefix-icon="el-icon-phone" clearable type="text" :autosize="false" :disabled="false" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="Thiết lập mật khẩu :" prop="password" align="left">
+            <el-input  @keyup.enter.native="register" spellcheck="false" placeholder="Nhập mật khẩu tối thiếu 6 kí tự" v-model="formData.password" size="medium" prefix-icon="el-icon-key" suffix-icon="" show-password :disabled="false" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="Nhập lại mật khẩu :" prop="repassword" align="left">
+            <el-input  @keyup.enter.native="register" spellcheck="false" placeholder="Nhập lại mật khẩu" v-model="formData.repassword" size="medium" prefix-icon="el-icon-key" suffix-icon="" show-password :disabled="false" autocomplete="off"></el-input>
+            
+          </el-form-item>
+          <br>
+          <el-form-item align="center">
+            <el-button type="primary"  @click="register" icon="el-icon-finished" :loading="loading" size="medium">ĐĂNG KÍ</el-button>
+          </el-form-item>
+        </el-form>
+
+      </el-col>
+    </el-row>
+    
+
+    <footer style="background-color: #0f193c" class="footer" id="footer">
+      <div class="footer__content footer__content--fluid-width footer__content--svg">
+
+        <div class="grid grid--5col">
+
+          <div class="grid__item grid__item--x2">
+            <h3 class="grid__title grid__title--footer-logo">LATERAL</h3>
+            <p class="grid__text grid__text--copyright">Copyright &copy; 2018 LATERAL.  <br />All Rights Reserved. Proudly made in EU. </p>
+            <ul class="grid__list grid__list--sicons">
+              <li><a href="/#"><img src="/img/twitter.png" alt="" title=""/></a></li>
+              <li><a href="/#"><img src="/img/facebook.png" alt="" title=""/></a></li>
+              <li><a href="/#"><img src="/img/linkedin.png" alt="" title=""/></a></li>
+            </ul>
+          </div>
+          <div class="grid__item">
+            <h3 class="grid__title grid__title--footer">Company</h3>
+            <ul class="grid__list grid__list--fmenu">
+              <li><a href="/#">About</a></li>
+              <li><a href="/#">Carrers</a></li>
+              <li><a href="/#">Awards</a></li>
+              <li><a href="/#">Users Program</a></li>
+              <li><a href="/#">Locations</a></li>
+            </ul>
+          </div>
+          <div class="grid__item">
+            <h3 class="grid__title grid__title--footer">Products</h3>
+            <ul class="grid__list grid__list--fmenu">
+
+              <li><a href="/#">Integrations</a></li>
+              <li><a href="/#">API</a></li>
+              <li><a href="/#">Pricing</a></li>
+              <li><a href="/#">Documentation</a></li>
+              <li><a href="/#">Release Notes</a></li>
+            </ul>
+          </div>
+          <div class="grid__item">
+            <h3 class="grid__title grid__title--footer">Support</h3>
+            <ul class="grid__list grid__list--fmenu">
+              <li><a href="/#">Contact</a></li>
+              <li><a href="/#">FAQ</a></li>
+              <li><a href="/#">Press</a></li>
+
+            </ul>
+          </div>
+          
+        </div>
+        
+        
+      </div>
+
+
+    </footer>
+
+  </div>
+
+</body>
+
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery.custom.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/swiper.custom.js"></script>
+<script src="/js/menu.js"></script>
+<script>
+  function setCookie(cname, cvalue, exdays) {
+
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  new Vue({
+    el: '#app',
+    data(){
+      var validate_password = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Quý khách được yêu cầu nhập mật khẩu.'));
+        } else {
+          if (this.formData.repassword !== '') {
+            this.$refs.form.validateField('repassword');
+          }
+          callback();
+        }
+      };
+      var validate_repassword = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('Quý khách được yêu cầu nhập lại mật khẩu.')); 
+        } else if (value !== this.formData.password) {
+          callback(new Error('Mật khẩu nhập lại không trùng khớp.'));
+        } else {
+          callback();
+        }
+      };
+      return {
+        formData:{
+          fullname:'',
+          password:'',
+          repassword:'',
+          phone:''
+        },
+        ruleForm:{
+          fullname:[{type:'string',required:true,message:'Quý khách vui lòng nhập Họ và Tên.'}],
+          password:[{type:'string',required:true,validator:validate_password}],
+          repassword:[{type:'string',required:true,validator:validate_repassword}],
+          phone:[{type:'string',required:true,message:'Quý khách vui lòng nhập Số điện thoại'}],
+
+        },
+        loading:false
+      }
+    },
+    methods:{
+      async register(){
+        let _ = this;
+        _.$refs['form'].validate(async valid=>{
+          if(valid){
+            _.loading = true;
+            try{
+              let {data} = await axios.post('/api/account/register',{phone:this.formData.phone,fullname:this.formData.fullname,password:this.formData.password});
+              if(data.error) throw data.error;
+
+              setCookie('auth_seu.vn',data.token,90);
+              this.$message({type:'success',message:'Đăng kí thành công !'});
+              
+              
+              window.location.href = "/dashboard";
+              
+            }catch(message){
+              _.$message({type:'error',message});
+            }
+            _.loading = false;
+          }else{
+            return false;
+          }
+        })
+      }
+    }
+  })
+
+</script>
+</html>
